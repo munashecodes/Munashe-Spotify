@@ -7,7 +7,7 @@ interface Props{
 }
 
 const TrackTable = ({track, number}: Props) => {
-    const content = track.artists.map((artist, index) => {
+    const content = track.artists.map((artist) => {
           return(
               
                 artist.name + ", "
@@ -15,7 +15,7 @@ const TrackTable = ({track, number}: Props) => {
           )
     })
   return (
-    <tr>
+    <tr key={number}>
         <td style={{ display: 'flex', alignItems: 'center' }}>
             <strong> {number + 1 + "." + " "}</strong>
             
