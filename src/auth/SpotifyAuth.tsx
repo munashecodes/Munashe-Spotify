@@ -47,7 +47,7 @@ export async function getAccessToken(clientId: string, code: string) {
       client_id: clientId,
       grant_type: 'authorization_code',
       code: code,
-      redirect_uri: 'http://localhost:5173',
+      redirect_uri: 'https://munashe-spotify.onrender.com',
       code_verifier: verifier!,
     }),{
       headers: {
