@@ -1,9 +1,9 @@
-import { Album } from "./AlbumDto";
+import { AlbumDto } from "./AlbumDto";
 import { Artist } from "./ArtistDto";
 import { ExternalUrls } from "./SpotifyUser";
 
 export interface Track {
-    album: Album;
+    album: AlbumDto;
     artists: Artist[];
     available_markets: string[];
     disc_number: number;

@@ -21,7 +21,7 @@ const TopArtist = () => {
         const fetchTopArtist = async () => {
             setLoading(true);
             var res = await apiRequests.getTopArtists(term)
-            setTopArtists(res)
+            setTopArtists(res!)
             setLoading(false)
         };
 

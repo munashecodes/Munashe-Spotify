@@ -14,7 +14,7 @@ const TopTrack = () => {
         const fetchTopTracks = async () => {
             setLoading(true)
             var res = await apiRequests.getTopTracks(term)
-            setTracks(res)
+            setTracks(res!)
             setLoading(false)
         }
 
@@ -25,6 +25,13 @@ const TopTrack = () => {
         setActiveTab(tabName)
         setTerm(tabName)
     }
+
+    const content = tracks.map((artist, index) => {
+        return(
+            <TrackTable track={artist} number={index}/>
+
+        )
+    })
 
     
   return (
@@ -62,12 +69,7 @@ const TopTrack = () => {
                         <Loader/> 
 
                     ) : (
-                        tracks.map((artist, index) =>{
-                            return(
-                                <TrackTable track={artist} number={index}/>
-                    
-                            )
-                        })
+                        content
                     )
                 }
                 

@@ -1,12 +1,20 @@
 import { SpotifyUser } from "../interfaces/SpotifyUser"
 import styled from "styled-components"
 import spotify from "../assets/spotify_icon_black.png"
+import { OverlayPanel } from 'primereact/overlaypanel';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+import 'primeflex/primeflex.css';
+import { useRef } from "react";
+
 
 interface Props {
     profile:  SpotifyUser
     page: (page: string) => void
 }
 const Header = ({profile, page}: Props) => {
+  const op = useRef<OverlayPanel | null>(null);
     const handleLinkClick = (event : any, pg: string) => {
         event.preventDefault(); 
         console.log('Link clicked');
@@ -29,7 +37,27 @@ const Header = ({profile, page}: Props) => {
 
         <Profile>
             <h3>{profile?.display_name}</h3>
-        <img src={profile?.images[1].url} alt="" />
+        <img src={profile?.images[1].url} alt="" onClick={(e) => op.current?.toggle(e)} />
+        <OverlayPanel ref={op} style={{ width: '200px', borderRadius: '10px',  backgroundColor: '#fff', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }}>
+        
+          <StyledList>
+            <StyledListItem>
+              <StyledLink  onClick={(event) => handleLinkClick(event, "topTrack")}>
+                Top Tracks
+              </StyledLink>
+            </StyledListItem>
+            <StyledListItem>
+              <StyledLink onClick={(event) => handleLinkClick(event, "topArtist")}>
+                Top Artists
+              </StyledLink>
+            </StyledListItem>
+            <StyledListItem>
+              <StyledLink>
+                Logout
+              </StyledLink>
+            </StyledListItem>
+          </StyledList>
+      </OverlayPanel>
 
         </Profile>
         
@@ -37,6 +65,31 @@ const Header = ({profile, page}: Props) => {
     </Head>
   )
 }
+
+
+
+const StyledList = styled.ul`
+  list-style-type: none;
+  margin: 0;
+`;
+
+const StyledListItem = styled.li`
+  margin: 0.5rem 0;
+`;
+
+const StyledLink = styled.a`
+  display: block;
+  color: grey;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #e0f7fa; /* Darker shade for hover effect */
+  }
+`;
+
 
 const Head = styled.div`
     max-width: 100vw;
