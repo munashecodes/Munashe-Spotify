@@ -30,7 +30,7 @@ const Header = ({profile, page}: Props) => {
         
         <nav>
             <ul>
-                <li><a href="" onClick={(event) => handleLinkClick(event, "topArtist")}>Top Artist</a></li>
+                <li><a href="" onClick={(event) => handleLinkClick(event, "album")}>Albums</a></li>
                 <li><a href="" onClick={(event) => handleLinkClick(event, "topTrack")}>Top Tracks</a></li>
             </ul>
         </nav>

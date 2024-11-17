@@ -3,12 +3,16 @@ import { TopArtistDto } from "../interfaces/TopArtistDto"
 import { apiRequests } from "../api/Spotify"
 import styled from "styled-components"
 import ArtistTable from "./ArtistTable"
+import Loader from "./BarLoader"
+import BarLoader from "./BarLoader"
+import { motion, Variants } from "framer-motion"
 
 const TopArtist = () => {
     const [topArtists, setTopArtists] = useState<TopArtistDto | null>(null)
     const [term, setTerm] = useState('short_term')
     const [activeTab, setActiveTab] = useState('short_term');
     const [loading, setLoading] = useState(false);
+    
     
     
     const handleTabClick = (tabName: SetStateAction<string>) => {
@@ -32,9 +36,11 @@ const TopArtist = () => {
     const content = topArtists?.items?.map((artist, index) =>
     {
         return(
+           
+                <ArtistTable  keyy={index} artist={artist}/>
             
                 
-            <ArtistTable  keyy={index} artist={artist}/>
+            
   
 
         )
@@ -66,13 +72,11 @@ const TopArtist = () => {
                 </BorderBottom>
             </NavContainer>
         
-            {loading ? (
-                    <Loader />
-                ) : (
+           
                     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '60vw', margin: 'auto' }}>
                         {content}
                     </div>
-                )}
+                
         
             
                 
@@ -83,20 +87,7 @@ const TopArtist = () => {
   )
 }
 
-const Loader = styled.div`
-    margin-top: 20vh;
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-top: 4px solid #38bdf8; /* Color of the loader */
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
 
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-`;
 
 const StyledLabel = styled.label`
     display: none; /* Visually hidden for screen readers */

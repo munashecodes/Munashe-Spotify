@@ -4,12 +4,14 @@ import { SpotifyUser } from "../interfaces/SpotifyUser";
 import Header from "./Header";
 import TopArtist from "./TopArtist";
 import TopTrack from "./TopTrack";
+import Album from "./Album";
+import Example from "./HomeDesign";
 
 
 const Home = () => {
   
     
-  const [currentPage, setCurrentPage] = useState('')
+  const [currentPage, setCurrentPage] = useState('home')
   const [profile, setProfile] = useState<SpotifyUser | null>(null);
   const clientId = "4ff51706617149c6afd724bac106e9ce";
   const clientSecret = "3d509594fd1346b1bf182f58800dc07b";
@@ -54,8 +56,10 @@ const Home = () => {
     <>
     <Header profile={profile!} page={changePage}/>
 
-    {currentPage === 'topArtist' && <TopArtist/>}
+    {currentPage === 'album' && <Album/>}
     {currentPage === 'topTrack' && <TopTrack/>}
+    {currentPage === 'topArtist' && <TopArtist/>}
+    {currentPage === 'home' && <Example/>}
 
 
       
