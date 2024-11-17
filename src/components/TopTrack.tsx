@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { Track } from "../interfaces/TrackDto";
 import { apiRequests } from "../api/Spotify";
 import TrackTable from "./TrackTable";
-import Loader from "./BarLoader";
 import BarLoader from "./BarLoader";
 
 const TopTrack = () => {

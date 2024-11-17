@@ -3,9 +3,7 @@ import { TopArtistDto } from "../interfaces/TopArtistDto"
 import { apiRequests } from "../api/Spotify"
 import styled from "styled-components"
 import ArtistTable from "./ArtistTable"
-import Loader from "./BarLoader"
 import BarLoader from "./BarLoader"
-import { motion, Variants } from "framer-motion"
 
 const TopArtist = () => {
     const [topArtists, setTopArtists] = useState<TopArtistDto | null>(null)
@@ -72,10 +70,14 @@ const TopArtist = () => {
                 </BorderBottom>
             </NavContainer>
         
-           
-                    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '60vw', margin: 'auto' }}>
+           {
+            loading ? <BarLoader/>
+            :
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '60vw', margin: 'auto' }}>
                         {content}
                     </div>
+           }
+                    
                 
         
             

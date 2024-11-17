@@ -11,7 +11,7 @@ export async function redirectToAuthCodeFlow(clientId: string, client_secret: st
     params.append("client_id", clientId);
     params.append("client_secret", client_secret);
     params.append("response_type", "code");
-    params.append("redirect_uri", "http://localhost:5173");
+    params.append("redirect_uri", "https://munashe-spotify.onrender.com");
     params.append("scope", "user-read-private user-read-email user-top-read");
     params.append("code_challenge_method", "S256");
     params.append("code_challenge", challenge);
@@ -47,7 +47,7 @@ export async function getAccessToken(clientId: string, code: string) {
       client_id: clientId,
       grant_type: 'authorization_code',
       code: code,
-      redirect_uri: 'http://localhost:5173',
+      redirect_uri: 'https://munashe-spotify.onrender.com',
       code_verifier: verifier!,
     }),{
       headers: {

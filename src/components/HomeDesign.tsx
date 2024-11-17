@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Sphere } from "@react-three/drei";
 import { pointsInner, pointsOuter } from "./utils"
-import { Group, Vector3 } from "three";
+import { Group} from "three";
 
 const ParticleRing = () => {
   return (
